@@ -8,7 +8,7 @@ import (
 	"strings"
 	//"io/ioutil"
 	"log"
-	"neph/api"
+	"mnemo/api"
 	//	"net/http"
 	"github.com/bgentry/speakeasy"
 	"okea/core/config"
@@ -32,7 +32,7 @@ func get_local_credentials(c *cli.Context) (api.Credentials, error) {
 		return api.Credentials{}, err
 	}
 
-	return api.FileToToken(fmt.Sprintf("%s/.neph/token.json", usr.HomeDir))
+	return api.FileToToken(fmt.Sprintf("%s/.mnemo/token.json", usr.HomeDir))
 }
 
 func init_local_credentials(c *cli.Context) (*os.File, error) {
@@ -41,13 +41,13 @@ func init_local_credentials(c *cli.Context) (*os.File, error) {
 		log.Fatal(err)
 		return nil, err
 	}
-	err = os.MkdirAll(fmt.Sprintf("%s/.neph", usr.HomeDir), 0700)
+	err = os.MkdirAll(fmt.Sprintf("%s/.mnemo", usr.HomeDir), 0700)
 	if err != nil {
 		log.Fatal(err)
 		return nil, err
 	}
 
-	return os.OpenFile(fmt.Sprintf("%s/.neph/token.json", usr.HomeDir), os.O_RDWR|os.O_CREATE, 0600)
+	return os.OpenFile(fmt.Sprintf("%s/.mnemo/token.json", usr.HomeDir), os.O_RDWR|os.O_CREATE, 0600)
 }
 
 func init_project(app *cli.App, c *cli.Context) {
@@ -104,7 +104,7 @@ func init_cli(app *cli.App, c *cli.Context) config.JSONConfig {
 			log.Fatal(uerr)
 		}
 
-		err = os.MkdirAll(fmt.Sprintf("%s/.neph", usr.HomeDir), 0700)
+		err = os.MkdirAll(fmt.Sprintf("%s/.mnemo", usr.HomeDir), 0700)
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -156,7 +156,7 @@ func main() {
 		log.Fatal(uerr)
 	}
 	okea_username = usr.Username
-	neph_conf_name := fmt.Sprintf("%s/.neph/config.json", usr.HomeDir)
+	mnemo_conf_name := fmt.Sprintf("%s/.mnemo/config.json", usr.HomeDir)
 
 	app.Flags = []cli.Flag{
 		cli.BoolFlag{
@@ -166,7 +166,7 @@ func main() {
 		},
 		cli.StringFlag{
 			Name:        "config,c",
-			Value:       neph_conf_name,
+			Value:       mnemo_conf_name,
 			Usage:       "Read config from file, JSON",
 			Destination: &config_filename,
 			EnvVar:      "NEPH_CONFIG",
@@ -204,7 +204,7 @@ func main() {
 		{
 			Name:        "deploy",
 			Aliases:     []string{"d"},
-			Usage:       "neph deploy blah blah blah",
+			Usage:       "mnemo deploy blah blah blah",
 			Description: "deploy this project",
 			Action: func(c *cli.Context) {
 				init_cli(app, c)
@@ -214,7 +214,7 @@ func main() {
 		{
 			Name:        "init",
 			Aliases:     []string{"i"},
-			Usage:       "neph init blah blah blah",
+			Usage:       "mnemo init blah blah blah",
 			Description: "initialize a new project",
 			Flags: []cli.Flag{
 				cli.StringFlag{
@@ -240,7 +240,7 @@ func main() {
 		{
 			Name:        "login",
 			Aliases:     []string{"l"},
-			Usage:       "neph login",
+			Usage:       "mnemo login",
 			Description: "Log into Media Lab Nephelei server",
 			Action: func(c *cli.Context) {
 
@@ -268,12 +268,12 @@ func main() {
 				if err != nil {
 					log.Fatal(err)
 				}
-				err = os.MkdirAll(fmt.Sprintf("%s/.neph", usr.HomeDir), 0700)
+				err = os.MkdirAll(fmt.Sprintf("%s/.mnemo", usr.HomeDir), 0700)
 				if err != nil {
 					log.Fatal(err)
 				}
 
-				conf.WriteConfig(fmt.Sprintf("%s/.neph/config.json", usr.HomeDir))
+				conf.WriteConfig(fmt.Sprintf("%s/.mnemo/config.json", usr.HomeDir))
 				resp, rerr := oks.Login()
 				if Verbose {
 					log.Printf("login resp/err; %v/%v", resp, rerr)
@@ -287,7 +287,7 @@ func main() {
 		},
 		{
 			Name:        "ls",
-			Usage:       "neph ls",
+			Usage:       "mnemo ls",
 			Description: "List your projects",
 			Action: func(c *cli.Context) {
 				//projectlist, err := okea.ls()
@@ -296,7 +296,7 @@ func main() {
 		{
 			Name:        "run",
 			Aliases:     []string{"r"},
-			Usage:       "neph run blah blah",
+			Usage:       "mnemo run blah blah",
 			Description: "run your superawesomeness",
 			Flags: []cli.Flag{
 				cli.StringFlag{
