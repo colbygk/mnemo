@@ -241,7 +241,7 @@ func main() {
 			Name:        "login",
 			Aliases:     []string{"l"},
 			Usage:       "mnemo login",
-			Description: "Log into Media Lab Nephelei server",
+			Description: "Log into Nephelei server",
 			Action: func(c *cli.Context) {
 
 				okea_password, perr := speakeasy.Ask("password: ")
