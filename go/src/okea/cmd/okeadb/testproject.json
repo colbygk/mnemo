@@ -1,0 +1,11 @@
+{
+  "uuid": "dxxdd",
+  "owner_uuid": "xxxx",
+  "title": "testproj",
+  "fqdn": "testy.media.mit.edu"
+  "enabled": false,
+  "cname_target": "http.media.mit.edu",
+  "upstream_port": 7777,
+  "upstream_host": "somethingsomething.docker.something"
+}
+

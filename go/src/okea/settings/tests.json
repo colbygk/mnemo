@@ -1,0 +1,6 @@
+{
+  "PrivateKeyPath": "/Users/colby/nb/necsys/neph/go/src/api.jwt.auth/settings/keys/private_key",
+  "PublicKeyPath": "/Users/colby/nb/necsys/neph/go/src/api.jwt.auth/settings/keys/public_key.pub",
+  "JWTExpirationDelta": 72,
+  "VerboseLog": true
+}

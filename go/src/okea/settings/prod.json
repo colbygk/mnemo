@@ -1,0 +1,6 @@
+{
+  "PrivateKeyPath": "/etc/okea/keys/key.private.pem",
+  "PublicKeyPath": "/etc/okea/keys/key.public.pem",
+  "JWTExpirationDelta": 336,
+  "VerboseLog": true
+}

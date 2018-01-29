@@ -1,0 +1,6 @@
+{
+  "PrivateKeyPath": "/Users/colby/nb/necsys/neph/go/src/okea/settings/keys/private_key",
+  "PublicKeyPath": "/Users/colby/nb/necsys/neph/go/src/okea/settings/keys/public_key.pub",
+  "JWTExpirationDelta": 72,,
+  "VerboseLog": true
+}
