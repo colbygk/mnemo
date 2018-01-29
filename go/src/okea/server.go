@@ -402,7 +402,7 @@ func main() {
 	settings.Init()
 
 	app := cli.NewApp()
-	app.Usage = "Tool to support Nephelai project creation/deploy"
+	app.Usage = "Tool to support Mnemonic project creation/deploy"
 
 	app.Version = "ADMETE 0.0.1"
 
