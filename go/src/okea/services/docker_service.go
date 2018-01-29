@@ -9,7 +9,7 @@ func CheckNephNginx(endpoint string) error {
 	client, _ := docker.NewClient(endpoint)
 	//cntnrs, _ := client.ListContainers(docker.ListContainersOptions{All: false})
 	// NB Need to specify the container name in a more configurable way!
-	cntnrs, _ := client.ListContainers(docker.ListContainersOptions{Filters: map[string][]string{"Names": []string{"/neph-nginx"}}})
+	cntnrs, _ := client.ListContainers(docker.ListContainersOptions{Filters: map[string][]string{"Names": []string{"/mnemo-nginx"}}})
 
 	for _, c := range cntnrs {
 		log.Println(" Found Neph NGINX, container ID: ", c.ID)
@@ -23,7 +23,7 @@ func ReloadNGINXConfig(endpoint string) error {
 	client, _ := docker.NewClient(endpoint)
 	//cntnrs, _ := client.ListContainers(docker.ListContainersOptions{All: false})
 	// NB Need to specify the container name in a more configurable way!
-	cntnrs, _ := client.ListContainers(docker.ListContainersOptions{Filters: map[string][]string{"Names": []string{"/neph-nginx"}}})
+	cntnrs, _ := client.ListContainers(docker.ListContainersOptions{Filters: map[string][]string{"Names": []string{"/mnemo-nginx"}}})
 
 	for _, c := range cntnrs {
 		client.KillContainer(docker.KillContainerOptions{ID: c.ID, Signal: docker.SIGHUP})
